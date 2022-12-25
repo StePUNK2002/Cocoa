@@ -1,4 +1,4 @@
-from Cocoa import NSObject, NSApplication, NSApp, NSWindow, NSButton, NSSound
+from Cocoa import NSObject, NSApplication, NSApp, NSWindow, NSButton, NSSound #пофиг на ошибки
 from PyObjCTools import AppHelper
 
 
