@@ -1,5 +1,7 @@
 from Cocoa import NSObject, NSApplication, NSApp, NSWindow, NSButton, NSSound #пофиг на ошибки
 from PyObjCTools import AppHelper
+from AppKit import NSWindowStyleMask
+from pycocoa import NSWindowStyleMaskResizable, NSColor
 
 
 class AppDelegate(NSObject):
@@ -21,7 +23,15 @@ def main():
 
     win = NSWindow.alloc()
     frame = ((200.0, 300.0), (250.0, 100.0))
-    win.initWithContentRect_styleMask_backing_defer_(frame, 15, 2, 0)
+    win.initWithContentRect_styleMask_backing_defer_(frame, 15, 8, True)
+    #print(win._.collectionBehavior)
+    print(win._.styleMask)
+    print(win._.collectionBehavior)
+    #TODO ._. это получение доступа к полям
+    #win._.styleMask = 0
+    #win._.alphaValue = 0.5
+    #print(win._.styleMask)
+    print(win._.styleMask)
     win.setTitle_("HelloWorld")
     win.setLevel_(3)  # floating window
 
