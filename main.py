@@ -1,7 +1,9 @@
 from Cocoa import NSObject, NSApplication, NSApp, NSWindow, NSButton, NSSound #пофиг на ошибки
 from PyObjCTools import AppHelper
-from AppKit import NSWindowStyleMask
+from AppKit import NSWorkspace
+import Foundation
 from pycocoa import NSWindowStyleMaskResizable, NSColor
+from Foundation import NSBundle
 
 
 class AppDelegate(NSObject):
@@ -34,6 +36,14 @@ def main():
     print(win._.styleMask)
     win.setTitle_("HelloWorld")
     win.setLevel_(3)  # floating window
+    workspace = NSWorkspace.sharedWorkspace()
+    app_name = "Discord"
+    print(workspace.fullPathForApplication_(app_name))
+    #workspace.launchApplication_(app_name)
+
+    bundle = NSBundle.mainBundle()
+    path = bundle.pathForResource_ofType_("3b0cecbf4ec6a5e013d6fa5e2a249e23","jpg")
+    print(path)
 
     hello = NSButton.alloc().initWithFrame_(((10.0, 10.0), (80.0, 80.0)))
     win.contentView().addSubview_(hello)
