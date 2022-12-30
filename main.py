@@ -1,4 +1,4 @@
-from Cocoa import NSObject, NSApplication, NSApp, NSWindow, NSButton, NSSound #пофиг на ошибки
+from Cocoa import NSObject, NSApplication, NSApp, NSWindow, NSButton, NSSound, NSPanel #пофиг на ошибки
 from PyObjCTools import AppHelper
 from AppKit import NSWorkspace
 import Foundation
@@ -23,10 +23,13 @@ def main():
     delegate = AppDelegate.alloc().init()
     NSApp().setDelegate_(delegate)
 
-    win = NSWindow.alloc()
+    win = NSPanel.alloc()
     frame = ((200.0, 300.0), (250.0, 100.0))
-    win.initWithContentRect_styleMask_backing_defer_(frame, 15, 8, True)
+    win.initWithContentRect_styleMask_backing_defer_(frame, 129, 2, True)
     #print(win._.collectionBehavior)
+    win._.level = 24
+    win._.collectionBehavior = 257
+    win._.styleMask = 129
     print(win._.styleMask)
     print(win._.collectionBehavior)
     #TODO ._. это получение доступа к полям
@@ -35,7 +38,7 @@ def main():
     #print(win._.styleMask)
     print(win._.styleMask)
     win.setTitle_("HelloWorld")
-    win.setLevel_(3)  # floating window
+    #win.setLevel_(3)  # floating window
     workspace = NSWorkspace.sharedWorkspace()
     app_name = "Discord"
     print(workspace.fullPathForApplication_(app_name))
